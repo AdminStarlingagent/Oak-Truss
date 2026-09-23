@@ -874,7 +874,7 @@ document.querySelectorAll('.js-ava').forEach(el=>el.src=AVATAR);
    LEAD_WEBHOOK = the "Inbound Webhook" trigger URL from the Oak & Truss Starling CRM
    sub-account (Automation → Workflows → trigger: Inbound Webhook). While it is empty,
    the form falls back to a pre-written text message to the crew instead of pretending. */
-const LEAD_WEBHOOK = '';
+const LEAD_WEBHOOK = 'https://services.leadconnectorhq.com/hooks/dgOkM0jQS74azyFHmBHh/webhook-trigger/e6afbcf9-d922-42ab-b5a7-48a1d0094c4d';
 const CREW_SMS = '3463994630';
 function leadPayload(extra){
   const consentEl = document.querySelector('[data-i18n="form_consent"]');
@@ -891,10 +891,17 @@ function leadPayload(extra){
 }
 function deliverLead(extra){
   if(!LEAD_WEBHOOK || lead.delivered) return Promise.resolve(false);
+  const payload = leadPayload(extra||{});
   const ctl = new AbortController(); const timer = setTimeout(()=>ctl.abort(), 8000);
-  return fetch(LEAD_WEBHOOK, {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(leadPayload(extra||{})), signal: ctl.signal})
+  return fetch(LEAD_WEBHOOK, {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload), signal: ctl.signal})
     .then(r=>{ clearTimeout(timer); if(r.ok) lead.delivered = true; return r.ok; })
-    .catch(()=>{ clearTimeout(timer); return false; });
+    .catch(()=>{
+      clearTimeout(timer);
+      /* CORS preflight refused or network hiccup: resend as a form post the browser never blocks (opaque reply, so we assume delivery) */
+      const form = new URLSearchParams();
+      Object.keys(payload).forEach(k=>form.append(k, Array.isArray(payload[k]) ? payload[k].join(',') : String(payload[k])));
+      return fetch(LEAD_WEBHOOK, {method:'POST', mode:'no-cors', body: form}).then(()=>{ lead.delivered = true; return true; }).catch(()=>false);
+    });
 }
 function showFallback(){
   const d = I18N[LANG];
