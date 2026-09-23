@@ -3,7 +3,7 @@
 Concept build by **Starling AI** · starlingagent.com · Jason Aguirre · (832) 808-6483
 
 Formerly the RoofBuds Roofing Solutions demo. The original design is preserved on the
-`roofbuds-original` branch.
+`roofbuds-original` branch. Repo: AdminStarlingagent/Oak-Truss · live at https://oakandtruss.com
 
 ## What's here
 - `index.html` — main site. Bilingual EN/ES (Spanish-language browsers open in Spanish),
