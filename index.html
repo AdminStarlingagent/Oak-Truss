@@ -165,6 +165,17 @@ html[lang=es] .hero h1{font-size:clamp(50px,5.6vw,82px)} /* Spanish lines run lo
 .lead-success .check svg{width:30px;height:30px}
 .lead-success h4{font-family:var(--display);font-weight:800;text-transform:uppercase;font-size:30px;line-height:1;margin-bottom:10px}
 .lead-success p{font-size:15px;color:var(--umber)}
+.lead-fallback{display:none;text-align:center;padding:26px 6px 8px}
+.lead-fallback.show{display:block}
+.lead-fallback h4{font-family:var(--display);font-weight:800;text-transform:uppercase;font-size:30px;line-height:1;margin-bottom:10px}
+.lead-fallback p{font-size:15px;color:var(--umber);margin-bottom:18px}
+.lead-card .lead-fallback .btn{width:100%;margin-top:10px}
+.lead-card .lead-fallback .btn-hivis{--fill:var(--copper);color:#000}
+.lead-card .lead-fallback .btn-hivis:hover{--fill:var(--copper-lt);color:#000}
+.consent.invalid{outline:2px solid #b3401e;outline-offset:6px}
+.consent-err{display:none;font-size:13px;color:#9b2f12;font-weight:600;margin:-8px 0 14px}
+.consent-err.show{display:block}
+.lead-card .btn[disabled]{opacity:.6;cursor:wait}
 .crm-chip{display:inline-flex;align-items:center;gap:8px;margin-top:18px;background:#000;color:var(--bone);font-size:12.5px;font-weight:600;padding:9px 14px}
 .crm-chip .pulse{width:8px;height:8px;border-radius:50%;background:var(--ok);animation:pulse 1.6s infinite}
 @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(63,163,107,.55)}70%{box-shadow:0 0 0 8px rgba(63,163,107,0)}100%{box-shadow:0 0 0 0 rgba(63,163,107,0)}}
@@ -510,10 +521,11 @@ footer::before{content:"";display:block;height:8px;background:var(--grain) 0 20%
               <option data-i18n="svc_opt5">Just an inspection</option>
             </select>
           </div>
-          <label class="consent">
-            <input type="checkbox" id="in-consent" checked>
+          <label class="consent" id="f-consent">
+            <input type="checkbox" id="in-consent">
             <span data-i18n="form_consent">I agree to receive calls and text messages from Oak &amp; Truss Roofing &amp; Exteriors about my estimate. Msg &amp; data rates may apply. Reply STOP to opt out.</span>
           </label>
+          <div class="consent-err" id="consent-err" data-i18n="form_consent_err">Please check the box so we can text you back.</div>
           <button type="submit" class="btn btn-hivis" data-i18n="form_btn">Get my free estimate</button>
         </form>
         <p class="lead-fine" data-i18n-html="form_fine">No pushy sales. No pressure. Just an honest look at your roof.</p>
@@ -523,6 +535,12 @@ footer::before{content:"";display:block;height:8px;background:var(--grain) 0 20%
         <h4 data-i18n="form_ok_title">You're in!</h4>
         <p id="success-copy" data-i18n="form_ok_sub">Oakley, our AI assistant, is texting you right now to lock in your inspection.</p>
         <div class="crm-chip"><span class="pulse"></span> <span data-i18n="form_ok_crm">Lead synced to CRM · Crew notified</span></div>
+      </div>
+      <div class="lead-fallback" id="lead-fallback">
+        <h4 data-i18n="fb_title">One more tap.</h4>
+        <p data-i18n="fb_sub">Text us and we'll take it from there — we reply fast, even after hours.</p>
+        <a class="btn btn-hivis" id="fb-sms" href="sms:3463994630" data-i18n="fb_sms">Text (346) 399-4630</a>
+        <a class="btn" id="fb-call" href="tel:3463994630" data-i18n="fb_call">Call instead</a>
       </div>
     </div>
     </div>
@@ -852,6 +870,40 @@ document.querySelectorAll('.js-logo').forEach(el=>el.src=LOGO);
 document.querySelectorAll('.js-badge').forEach(el=>el.src=BADGE);
 document.querySelectorAll('.js-ava').forEach(el=>el.src=AVATAR);
 
+/* ---------------- lead delivery ----------------
+   LEAD_WEBHOOK = the "Inbound Webhook" trigger URL from the Oak & Truss Starling CRM
+   sub-account (Automation → Workflows → trigger: Inbound Webhook). While it is empty,
+   the form falls back to a pre-written text message to the crew instead of pretending. */
+const LEAD_WEBHOOK = '';
+const CREW_SMS = '3463994630';
+function leadPayload(extra){
+  const consentEl = document.querySelector('[data-i18n="form_consent"]');
+  const parts = (lead.fullName||lead.name||'').trim().split(/\s+/);
+  return Object.assign({
+    source:'oakandtruss.com website', channel: extra.stage==='chat' ? 'website chat' : 'estimate form',
+    first_name: parts[0]||'', last_name: parts.slice(1).join(' '), name: lead.fullName||lead.name||'',
+    phone: lead.phone ? '+1'+String(lead.phone).slice(-10) : '',
+    service: lead.service||'', preferred_time: lead.time||'', language: LANG,
+    consent_sms: !!lead.consent, consent_text: lead.consent ? (consentEl ? consentEl.textContent.trim() : '') : 'phone number provided in website chat after opt-in notice',
+    consent_at: new Date().toISOString(), page_url: location.href, referrer: document.referrer||'', user_agent: navigator.userAgent,
+    tags: ['website-lead','starling_engage']
+  }, extra);
+}
+function deliverLead(extra){
+  if(!LEAD_WEBHOOK || lead.delivered) return Promise.resolve(false);
+  const ctl = new AbortController(); const timer = setTimeout(()=>ctl.abort(), 8000);
+  return fetch(LEAD_WEBHOOK, {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(leadPayload(extra||{})), signal: ctl.signal})
+    .then(r=>{ clearTimeout(timer); if(r.ok) lead.delivered = true; return r.ok; })
+    .catch(()=>{ clearTimeout(timer); return false; });
+}
+function showFallback(){
+  const d = I18N[LANG];
+  const body = d.sms_body(lead.fullName||lead.name||'', lead.service||'');
+  document.getElementById('fb-sms').href = 'sms:'+CREW_SMS+'?&body='+encodeURIComponent(body);
+  document.getElementById('lead-form-view').style.display='none';
+  document.getElementById('lead-fallback').classList.add('show');
+}
+
 /* ---------------- i18n ---------------- */
 const I18N = {
 en:{
@@ -871,7 +923,9 @@ en:{
   form_consent:"I agree to receive calls and text messages from Oak & Truss Roofing & Exteriors about my estimate. Msg & data rates may apply. Reply STOP to opt out.",
   form_btn:"Get my free estimate", form_fine:'No pushy sales. No pressure. Just an honest look at your roof. &nbsp;<a href="#" onclick="openLegal(&quot;pp&quot;);return false">Privacy</a> · <a href="#" onclick="openLegal(&quot;tos&quot;);return false">SMS Terms</a>',
   form_ok_title:"You're in!", form_ok_sub:"Oakley, our AI assistant, is texting you right now to lock in your inspection.",
-  form_ok_crm:"Lead synced to CRM · Crew notified",
+  form_ok_crm:"Lead synced to CRM · Crew notified", form_sending:"Sending…", form_consent_err:"Please check the box so we can text you back.",
+  fb_title:"One more tap.", fb_sub:"Text us and we'll take it from there — we reply fast, even after hours.", fb_sms:"Text (346) 399-4630", fb_call:"Call instead",
+  sms_body:(n,s)=>`Hi Oak & Truss — I'd like a free estimate. Name: ${n}. Need: ${s}.`,
   storm_txt:'Storm or hail damage? We document everything and work with your insurance \u2014 <a href="tel:3463994630">call (346) 399-4630</a> for a free inspection.',
   trust1:"Owens Corning® systems", trust1s:"Warranty-registered installs",
   trust2:"Most roofs done in 1 day", trust2s:"Yard cleaned, nails swept",
@@ -941,7 +995,9 @@ es:{
   form_consent:"Acepto recibir llamadas y mensajes de texto de Oak & Truss Roofing & Exteriors sobre mi cotización. Pueden aplicar tarifas de mensajes y datos. Responda STOP para cancelar.",
   form_btn:"Obtener mi cotización gratis", form_fine:"Sin presión. Sin ventas agresivas. Solo la verdad sobre su techo.",
   form_ok_title:"¡Listo!", form_ok_sub:"Oakley, nuestro asistente de IA, le está enviando un texto ahora mismo para agendar su inspección.",
-  form_ok_crm:"Cliente registrado en el CRM · Equipo notificado",
+  form_ok_crm:"Cliente registrado en el CRM · Equipo notificado", form_sending:"Enviando…", form_consent_err:"Marque la casilla para que podamos responderle por texto.",
+  fb_title:"Un paso más.", fb_sub:"Mándenos un texto y nosotros seguimos — respondemos rápido, incluso fuera de horario.", fb_sms:"Enviar texto al (346) 399-4630", fb_call:"Mejor llamar",
+  sms_body:(n,s)=>`Hola Oak & Truss — quiero una cotización gratis. Nombre: ${n}. Necesito: ${s}.`,
   storm_txt:'¿Daños por tormenta o granizo? Documentamos todo y trabajamos con su aseguranza \u2014 <a href="tel:3463994630">llame al (346) 399-4630</a> para una inspección gratis.',
   trust1:"Sistemas Owens Corning®", trust1s:"Garantía registrada",
   trust2:"Techos listos en 1 día", trust2s:"Patio limpio, sin clavos",
@@ -1027,7 +1083,7 @@ en:{
   area:"We cover Spring, Houston, The Woodlands, Conroe, Tomball, Klein, Cypress and nearby. If you're close, the inspection is free! What's your first name?",
   human:"Absolutely — the crew loves talking to homeowners directly. Call or text (346) 399-4630 anytime. Or I can book your inspection right now and they'll confirm personally. What's your first name?",
   fallback:"I hear you! The fastest way to get real answers is a free inspection — photos, video, honest options, zero pressure. Want me to set that up? What's your first name?",
-  ask_phone:(n)=>`Nice to meet you, ${n}! What's the best mobile number to text your confirmation to?`,
+  ask_phone:(n)=>`Nice to meet you, ${n}! What's the best mobile number to text your confirmation to? (By sharing it you agree we may text you about your estimate — reply STOP anytime.)`,
   bad_phone:"Hmm, that doesn't look like a full number — mind sending the 10-digit mobile? (e.g. 281-555-0123)",
   ask_time:"Perfect. When works best for your free inspection?",
   chips_time:["Tomorrow morning","Tomorrow afternoon","Saturday"],
@@ -1053,7 +1109,7 @@ es:{
   area:"Cubrimos Spring, Houston, The Woodlands, Conroe, Tomball, Klein, Cypress y alrededores. Si está cerca, ¡la inspección es gratis! ¿Cuál es su nombre?",
   human:"¡Claro! Al equipo le encanta hablar directo con los clientes. Llame o mande texto al (346) 399-4630 cuando guste. O le agendo la inspección ahora y ellos confirman personalmente. ¿Cuál es su nombre?",
   fallback:"¡Lo entiendo! La forma más rápida de tener respuestas reales es una inspección gratis — fotos, video, opciones honestas, cero presión. ¿Se la agendo? ¿Cuál es su nombre?",
-  ask_phone:(n)=>`¡Mucho gusto, ${n}! ¿A qué número de celular le mando la confirmación por texto?`,
+  ask_phone:(n)=>`¡Mucho gusto, ${n}! ¿A qué número de celular le mando la confirmación por texto? (Al compartirlo acepta recibir textos sobre su cotización — responda STOP para cancelar.)`,
   bad_phone:"Mmm, ese número se ve incompleto — ¿me manda los 10 dígitos? (ej. 281-555-0123)",
   ask_time:"Perfecto. ¿Cuándo le queda mejor la inspección gratis?",
   chips_time:["Mañana en la mañana","Mañana en la tarde","El sábado"],
@@ -1142,6 +1198,8 @@ function handleInput(raw){
   if(chatState==='await_time'){
     lead.time = raw;
     chatState='done';
+    if(!lead.service){ lead.service = 'Roof inspection (website chat)'; }
+    deliverLead({stage:'chat'});
     botSay(D.confirm(lead.name||'friend', raw), ()=>{
       setTimeout(()=>{ sysSay(D.crm); setTimeout(()=>{ botSay(D.post, ()=>showChips(D.chips_done)); }, 700); }, 500);
     });
@@ -1187,16 +1245,27 @@ document.getElementById('leadForm').addEventListener('submit', function(e){
   fName.classList.toggle('invalid', !(name.value.trim().length>1)); if(name.value.trim().length<2) ok=false;
   const digits = phone.value.replace(/\D/g,'');
   fPhone.classList.toggle('invalid', digits.length<10); if(digits.length<10) ok=false;
+  const consent = document.getElementById('in-consent').checked;
+  document.getElementById('f-consent').classList.toggle('invalid', !consent);
+  document.getElementById('consent-err').classList.toggle('show', !consent);
+  if(!consent) ok=false;
   if(!ok) return;
 
   const svcSel = document.getElementById('in-service');
-  lead.name = name.value.trim().split(' ')[0];
+  lead.fullName = name.value.trim();
+  lead.name = lead.fullName.split(' ')[0];
   lead.name = lead.name.charAt(0).toUpperCase()+lead.name.slice(1);
   lead.phone = digits;
   lead.service = svcSel.options[svcSel.selectedIndex].text;
+  lead.consent = true;
 
-  document.getElementById('lead-form-view').style.display='none';
-  document.getElementById('lead-success').classList.add('show');
+  const btn = this.querySelector('button[type=submit]');
+  btn.disabled = true; btn.textContent = I18N[LANG].form_sending;
+  deliverLead({stage:'form'}).then(sent=>{
+    btn.disabled = false; btn.textContent = I18N[LANG].form_btn;
+    if(!sent){ showFallback(); return; }
+    document.getElementById('lead-form-view').style.display='none';
+    document.getElementById('lead-success').classList.add('show');
 
   /* the demo money-shot: form → instant AI text */
   setTimeout(()=>{
@@ -1207,6 +1276,7 @@ document.getElementById('leadForm').addEventListener('submit', function(e){
     chatState='await_time';
     setTimeout(()=>{ botSay(CHAT[LANG].form_greet(lead.name, lead.service), ()=>showChips(CHAT[LANG].chips_time)); }, 600);
   }, 1200);
+  });
 });
 
 /* ---------------- phone mockup demo loop ---------------- */
