@@ -215,41 +215,13 @@ html[lang=es] .hero h1{font-size:clamp(50px,5.6vw,82px)} /* Spanish lines run lo
 
 /* ---------- why / promise ---------- */
 .why{background:var(--walnut)}
-.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
-.promise-list{display:flex;flex-direction:column;margin-top:14px}
-.promise{display:flex;gap:20px;padding:24px 0;border-top:1px solid var(--bark)}
-.promise:last-child{border-bottom:1px solid var(--bark)}
+.why-grid{display:block}
+.promise-list{display:grid;grid-template-columns:1fr 1fr;gap:0 56px;margin-top:14px;border-top:1px solid var(--bark)}
+.promise{display:flex;gap:20px;padding:26px 0;border-bottom:1px solid var(--bark)}
 .promise .ico{flex:none;color:var(--copper);padding-top:2px}
 .promise .ico svg{width:26px;height:26px}
 .promise h4{font-family:var(--display);font-weight:800;text-transform:uppercase;font-size:23px;line-height:1.05;letter-spacing:.03em;margin-bottom:6px}
 .promise p{font-size:15.5px;color:var(--ash)}
-.quote-card{background:var(--bone);color:#000;padding:0 36px 34px;position:sticky;top:120px}
-.quote-card::before{content:"";display:block;height:10px;margin:0 -36px 34px;background:var(--grain) 60% 50%/520px auto}
-.quote-card .q{font-size:20px;line-height:1.55}
-.quote-card .q b{color:var(--copper-ink)}
-.quote-card .stars{color:var(--copper-ink)}
-.quote-card .who{margin-top:24px;display:flex;align-items:center;gap:13px}
-.quote-card .avatar,.rev .avatar{border-radius:50%;background:#000;color:var(--bone);display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:800}
-.quote-card .avatar{width:46px;height:46px;font-size:22px}
-.quote-card .who small{display:block;color:var(--umber);font-size:13px}
-.quote-card .gbadge{margin-top:24px;padding-top:20px;border-top:1px solid var(--bone-2);display:flex;align-items:center;gap:10px;font-size:13.5px;color:var(--umber)}
-
-/* ---------- reviews ---------- */
-.rev-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
-.rev-head .rule{margin-bottom:0}
-.rev-score{display:flex;align-items:center;gap:16px;background:#000;color:var(--bone);padding:16px 22px}
-.rev-score .big{font-family:var(--display);font-weight:900;font-size:52px;line-height:.9}
-.rev-score .stars{color:var(--copper-lt)}
-.rev-score small{color:var(--ash);font-size:13px;display:block}
-.rev-grid{display:grid;grid-template-columns:repeat(3,1fr);margin-top:48px;border-top:3px solid #000;border-left:1px solid var(--bone-2)}
-.rev{padding:28px 26px;display:flex;flex-direction:column;gap:12px;border-right:1px solid var(--bone-2);border-bottom:1px solid var(--bone-2)}
-.rev .top{display:flex;justify-content:space-between;align-items:center}
-.rev .who{display:flex;align-items:center;gap:11px;font-weight:700;font-size:15.5px}
-.rev .avatar{width:38px;height:38px;font-size:19px}
-.rev .date{font-size:12.5px;color:var(--umber)}
-.rev p{font-size:15.5px;color:#241a13;line-height:1.55}
-.rev .g{display:flex;align-items:center;gap:7px;font-size:12.5px;color:var(--umber);margin-top:auto;padding-top:6px}
-
 /* ---------- areas ---------- */
 .areas{background:var(--black)}
 .area-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:64px;align-items:center}
@@ -399,12 +371,10 @@ footer::before{content:"";display:block;height:8px;background:var(--grain) 0 20%
   .steps{grid-template-columns:repeat(2,1fr)}
   .step:nth-child(3){padding-left:0;border-left:0}
   .step:nth-child(n+3){border-top:1px solid var(--bark)}
-  .rev-grid{grid-template-columns:repeat(2,1fr)}
   .trust .wrap{grid-template-columns:repeat(2,1fr)}
   .trust .t:nth-child(3){padding-left:0;border-left:0}
   .trust .t:nth-child(n+3){border-top:1px solid var(--bark)}
-  .why-grid,.area-grid,.ai .wrap{grid-template-columns:1fr;gap:48px}
-  .quote-card{position:static}
+  .area-grid,.ai .wrap{grid-template-columns:1fr;gap:48px}
   .f-grid{grid-template-columns:1fr 1fr}
   .final-card{grid-template-columns:1fr;padding:0 34px 48px}
   .final-card::before{margin:0 -34px 40px}
@@ -423,7 +393,7 @@ footer::before{content:"";display:block;height:8px;background:var(--grain) 0 20%
   .nav-phone{display:none}
   .nav .btn{font-size:16px;padding:11px 14px 10px}
   .btn{text-align:center}
-  .svc-grid,.steps,.rev-grid{grid-template-columns:1fr}
+  .svc-grid,.steps,.promise-list{grid-template-columns:1fr}
   .step,.step + .step{padding-left:0;border-left:0}
   .step + .step{border-top:1px solid var(--bark)}
   .trust .wrap{grid-template-columns:1fr}
@@ -441,8 +411,6 @@ footer::before{content:"";display:block;height:8px;background:var(--grain) 0 20%
   .final-card::before{margin:0 -22px 34px}
   .final-phone{margin-left:0;width:100%}
   .f-grid{grid-template-columns:1fr;gap:32px}
-  .quote-card{padding:0 24px 28px}
-  .quote-card::before{margin:0 -24px 28px}
   .phone{width:100%;max-width:330px}
 }
 </style>
@@ -456,9 +424,9 @@ footer::before{content:"";display:block;height:8px;background:var(--grain) 0 20%
       <span data-i18n="top_family">Family-owned · Spring, TX</span><span class="dot"></span><span class="hide-sm" data-i18n="top_hours">Mon–Fri 7am–8pm · Sat 8am–2pm</span>
     </div>
     <div style="display:flex;align-items:center;gap:16px">
-      <a href="tel:2817664227" style="display:flex;align-items:center;gap:7px">
+      <a href="tel:3463994630" style="display:flex;align-items:center;gap:7px">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-        (281) 766-4227
+        (346) 399-4630
       </a>
       <div class="lang-toggle" role="group" aria-label="Language">
         <button id="lang-en" class="active" onclick="setLang('en')">EN</button>
@@ -477,14 +445,13 @@ footer::before{content:"";display:block;height:8px;background:var(--grain) 0 20%
     <div class="nav-links">
       <a href="#services" data-i18n="nav_services">Services</a>
       <a href="#process" data-i18n="nav_process">Our Process</a>
-      <a href="#reviews" data-i18n="nav_reviews">Reviews</a>
       <a href="#areas" data-i18n="nav_areas">Service Areas</a>
       <a href="internship.html" data-i18n="nav_intern">Internship</a>
     </div>
     <div class="nav-cta">
-      <a class="nav-phone" href="tel:2817664227">
+      <a class="nav-phone" href="tel:3463994630">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-        <span>(281) 766-4227</span>
+        <span>(346) 399-4630</span>
       </a>
       <a class="btn btn-hivis" href="#estimate" data-i18n="nav_cta">Free estimate</a>
     </div>
@@ -503,7 +470,6 @@ footer::before{content:"";display:block;height:8px;background:var(--grain) 0 20%
         <button class="btn btn-ghost btn-lg" onclick="openChat()" data-i18n="hero_cta2">Chat with Oakley</button>
       </div>
       <div class="hero-proof">
-        <div class="item"><span class="stars">★★★★★</span> <span data-i18n="hero_proof1">5.0 on Google</span></div>
         <div class="item">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>
           <span data-i18n="hero_proof2">Insurance claims welcome</span>
@@ -530,7 +496,7 @@ footer::before{content:"";display:block;height:8px;background:var(--grain) 0 20%
           </div>
           <div class="field" id="f-phone">
             <label for="in-phone" data-i18n="form_phone">Mobile number</label>
-            <input id="in-phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="(281) 555-0123">
+            <input id="in-phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="(346) 555-0123">
             <div class="err" data-i18n="form_phone_err">Please enter a valid 10-digit number.</div>
           </div>
           <div class="field">
@@ -555,7 +521,7 @@ footer::before{content:"";display:block;height:8px;background:var(--grain) 0 20%
         <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></div>
         <h4 data-i18n="form_ok_title">You're in!</h4>
         <p id="success-copy" data-i18n="form_ok_sub">Oakley, our AI assistant, is texting you right now to lock in your inspection.</p>
-        <div class="crm-chip"><span class="pulse"></span> <span data-i18n="form_ok_crm">Lead synced to CRM · Chris &amp; Guillermo notified</span></div>
+        <div class="crm-chip"><span class="pulse"></span> <span data-i18n="form_ok_crm">Lead synced to CRM · Crew notified</span></div>
       </div>
     </div>
     </div>
@@ -569,7 +535,7 @@ footer::before{content:"";display:block;height:8px;background:var(--grain) 0 20%
 <div class="storm">
   <div class="wrap">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M13 2 3 14h7l-1 8 11-13h-7l1-7z"/></svg>
-    <span data-i18n-html="storm_txt">Storm or hail damage? We document everything and work with your insurance — <a href="tel:2817664227">call (281) 766-4227</a> for a free inspection.</span>
+    <span data-i18n-html="storm_txt">Storm or hail damage? We document everything and work with your insurance — <a href="tel:3463994630">call (346) 399-4630</a> for a free inspection.</span>
   </div>
 </div>
 
@@ -579,7 +545,7 @@ footer::before{content:"";display:block;height:8px;background:var(--grain) 0 20%
     <div class="t rv"><div class="ico oc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 3 7v6c0 5 4 8.4 9 9 5-.6 9-4 9-9V7l-9-5z"/><path d="m9 12 2 2 4-4"/></svg></div><div><span data-i18n="trust1">Owens Corning® systems</span><small data-i18n="trust1s">Warranty-registered installs</small></div></div>
     <div class="t rv"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 6l-9.5 9.5-5-5L1 18"/><path d="M17 6h6v6"/></svg></div><div><span data-i18n="trust2">Most roofs done in 1 day</span><small data-i18n="trust2s">Yard cleaned, nails swept</small></div></div>
     <div class="t rv"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></div><div><span data-i18n="trust3">Photo &amp; video documented</span><small data-i18n="trust3s">See your roof without climbing</small></div></div>
-    <div class="t rv"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><div><span data-i18n="trust4">Family-owned, local crew</span><small data-i18n="trust4s">Chris &amp; Guillermo, Spring TX</small></div></div>
+    <div class="t rv"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><div><span data-i18n="trust4">Family-owned, local crew</span><small data-i18n="trust4s">Spring, TX</small></div></div>
   </div>
 </div>
 
@@ -695,73 +661,6 @@ footer::before{content:"";display:block;height:8px;background:var(--grain) 0 20%
           </div>
         </div>
       </div>
-      <div>
-        <div class="quote-card rv">
-          <p class="q" data-i18n-html="quote_txt">"A door-to-door salesman tried pointing out 'hail damage' and pushing a full replacement. They showed me <b>pictures and videos</b> of what was actually up there. Not one time did they use pushy tactics or fear-inducing language. <b>Rarely do you find a roofing business this honest.</b>"</p>
-          <div class="who">
-            <div class="avatar">J</div>
-            <div><b>Jonathan Z.</b><small data-i18n="quote_who">Verified Google review · Spring, TX</small></div>
-          </div>
-          <div class="gbadge">
-            <span class="stars">★★★★★</span>
-            <span data-i18n="quote_badge">Rated 5.0 across Google reviews</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== reviews ===== -->
-<section class="sec reviews on-bone" id="reviews">
-  <div class="wrap">
-    <div class="rev-head">
-      <div>
-        <h2 class="h-display" data-i18n-html="rev_h2">Neighbors don't<br>lie about roofs.</h2>
-    <i class="rule" aria-hidden="true"></i>
-      </div>
-      <div class="rev-score rv">
-        <span class="big">5.0</span>
-        <div><span class="stars">★★★★★</span><small data-i18n="rev_sub">Google reviews · Houston metro</small></div>
-      </div>
-    </div>
-    <div class="rev-grid">
-      <div class="rev rv">
-        <div class="top"><div class="who"><span class="avatar">N</span> Nancy S.</div><span class="date">10/2025</span></div>
-        <span class="stars">★★★★★</span>
-        <p data-i18n="rev1">"They answered all my questions, replaced the roof, cleaned every nail from my yard — then registered my warranty for me. Couldn't be happier."</p>
-        <div class="g"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg> <span data-i18n="rev_g">Posted on Google</span></div>
-      </div>
-      <div class="rev rv">
-        <div class="top"><div class="who"><span class="avatar">M</span> Meagan Y.</div><span class="date">08/2024</span></div>
-        <span class="stars">★★★★★</span>
-        <p data-i18n="rev2">"After back-to-back hurricanes, Guillermo even fought to get my insurance to raise their assessment — then built me an affordable option when they wouldn't."</p>
-        <div class="g"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg> <span data-i18n="rev_g">Posted on Google</span></div>
-      </div>
-      <div class="rev rv">
-        <div class="top"><div class="who"><span class="avatar">R</span> Renee G.</div><span class="date">08/2024</span></div>
-        <span class="stars">★★★★★</span>
-        <p data-i18n="rev3">"New roof installed in one day. Responsive, courteous, efficient — my roof looks sharp. Stellar experience all the way around."</p>
-        <div class="g"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg> <span data-i18n="rev_g">Posted on Google</span></div>
-      </div>
-      <div class="rev rv">
-        <div class="top"><div class="who"><span class="avatar">A</span> Andrea D.</div><span class="date">10/2024</span></div>
-        <span class="stars">★★★★★</span>
-        <p data-i18n="rev4">"Our neighbor recommended them after bad experiences with other companies. They gave us insurance and out-of-pocket options, finished in one day, and left our yard spotless."</p>
-        <div class="g"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg> <span data-i18n="rev_g">Posted on Google</span></div>
-      </div>
-      <div class="rev rv">
-        <div class="top"><div class="who"><span class="avatar">P</span> Pablo G.</div><span class="date">11/2023</span></div>
-        <span class="stars">★★★★★</span>
-        <p data-i18n="rev5">"Memo made the entire process easy and stress-free. Installed in one day — it felt great coming home from work to a fresh new roof."</p>
-        <div class="g"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg> <span data-i18n="rev_g">Posted on Google</span></div>
-      </div>
-      <div class="rev rv">
-        <div class="top"><div class="who"><span class="avatar">V</span> Vicente G.</div><span class="date">04/2025</span></div>
-        <span class="stars">★★★★★</span>
-        <p data-i18n="rev6">"Amazing job, easy process. Roof, fence, or any project on your home — I'll definitely be using them again."</p>
-        <div class="g"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg> <span data-i18n="rev_g">Posted on Google</span></div>
-      </div>
     </div>
   </div>
 </section>
@@ -811,7 +710,7 @@ footer::before{content:"";display:block;height:8px;background:var(--grain) 0 20%
       <div class="ai-points">
         <div class="ai-point rv"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2 3 14h7l-1 8 11-13h-7l1-7z"/></svg></div><div><b data-i18n="ai1">Replies in under 60 seconds</b><span data-i18n="ai1p">Every call, text, and web lead gets an instant answer — leads answered in 5 minutes are far more likely to book.</span></div></div>
         <div class="ai-point rv"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 12h8M12 8v8"/><circle cx="12" cy="12" r="10"/></svg></div><div><b data-i18n="ai2">Fully bilingual</b><span data-i18n="ai2p">Oakley switches between English and Spanish mid-conversation — just like the crew does.</span></div></div>
-        <div class="ai-point rv"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div><div><b data-i18n="ai3">Books straight to the calendar</b><span data-i18n="ai3p">Inspections land on Chris &amp; Guillermo's schedule automatically — no phone tag, no lost sticky notes.</span></div></div>
+        <div class="ai-point rv"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div><div><b data-i18n="ai3">Books straight to the calendar</b><span data-i18n="ai3p">Inspections land on the crew's schedule automatically — no phone tag, no lost sticky notes.</span></div></div>
         <div class="ai-point rv"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 1 1-9-9"/><path d="M21 3v6h-6"/></svg></div><div><b data-i18n="ai4">Every lead lands in the CRM</b><span data-i18n="ai4p">Name, number, address, damage type, conversation history — captured and followed up automatically. Nothing slips.</span></div></div>
       </div>
       <button class="btn btn-hivis btn-lg" onclick="openChat()" data-i18n="ai_cta">Chat with Oakley</button>
@@ -842,7 +741,7 @@ footer::before{content:"";display:block;height:8px;background:var(--grain) 0 20%
       <div class="final-actions">
         <a class="btn btn-hivis btn-lg" href="#estimate" data-i18n="fin_cta1">Get my free estimate</a>
         <button class="btn btn-ghost btn-lg" onclick="openChat()" data-i18n="fin_cta2">Chat with Oakley</button>
-        <div class="final-phone"><span data-i18n="fin_or">or call / text us directly</span><b><a href="tel:2817664227">(281) 766-4227</a></b></div>
+        <div class="final-phone"><span data-i18n="fin_or">or call / text us directly</span><b><a href="tel:3463994630">(346) 399-4630</a></b></div>
       </div>
       </div>
     </div>
@@ -874,7 +773,6 @@ footer::before{content:"";display:block;height:8px;background:var(--grain) 0 20%
         <h4 data-i18n="f_co">Company</h4>
         <ul>
           <li><a href="#process" data-i18n="nav_process">Our Process</a></li>
-          <li><a href="#reviews" data-i18n="nav_reviews">Reviews</a></li>
           <li><a href="#areas" data-i18n="nav_areas">Service Areas</a></li>
           <li><a href="internship.html" data-i18n="f_intern">Summer Internship</a></li>
           <li><a href="#" onclick="openLegal('pp');return false" data-i18n="f_privacy">Privacy Policy</a></li>
@@ -884,7 +782,7 @@ footer::before{content:"";display:block;height:8px;background:var(--grain) 0 20%
       <div>
         <h4 data-i18n="f_contact">Contact</h4>
         <ul>
-          <li><a href="tel:2817664227">(281) 766-4227</a></li>
+          <li><a href="tel:3463994630">(346) 399-4630</a></li>
           <li><a href="https://www.google.com/maps/search/?api=1&query=Spring%2C+Texas" target="_blank" rel="noopener" data-i18n="f_loc">Spring, Texas</a></li>
           <li><a href="#" onclick="setLang(LANG==='en'?'es':'en');return false" data-i18n="f_lang">English · Español</a></li>
           <li><a href="#" onclick="openChat();return false" data-i18n="f_chat">Chat with Oakley 24/7</a></li>
@@ -929,7 +827,7 @@ footer::before{content:"";display:block;height:8px;background:var(--grain) 0 20%
 
 <!-- ===== mobile call bar ===== -->
 <div class="callbar">
-  <a class="c-call" href="tel:2817664227"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg> <span data-i18n="bar_call">Call now</span></a>
+  <a class="c-call" href="tel:3463994630"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg> <span data-i18n="bar_call">Call now</span></a>
   <button class="c-est" onclick="openChat()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> <span data-i18n="bar_chat">Chat with Oakley</span></button>
 </div>
 
@@ -952,12 +850,12 @@ const I18N = {
 en:{
   top_family:"Family-owned · Spring, TX", top_hours:"Mon–Fri 7am–8pm · Sat 8am–2pm",
   brand_sub:"Roofing Solutions",
-  nav_services:"Services", nav_process:"Our Process", nav_reviews:"Reviews", nav_areas:"Service Areas", nav_intern:"Internship", f_intern:"Summer Internship", nav_cta:"Free estimate",
+  nav_services:"Services", nav_process:"Our Process", nav_areas:"Service Areas", nav_intern:"Internship", f_intern:"Summer Internship", nav_cta:"Free estimate",
   hero_flag:"Same-day estimates", hero_kicker:"Spring, Houston, Conroe, Tomball & The Woodlands",
   hero_h1:'Crafted by hand.<br>Built to last.',
   hero_sub:'Family-owned roofing and exteriors — installing <strong>Owens Corning\u00AE systems</strong> \u2014 with photo-documented inspections, honest options, and most roofs replaced <strong>in a single day</strong>.',
   hero_cta1:"Get my free estimate", hero_cta2:"Chat with Oakley",
-  hero_proof1:"5.0 on Google", hero_proof2:"Insurance claims welcome", hero_proof3:"English · Español",
+  hero_proof2:"Insurance claims welcome", hero_proof3:"English · Español",
   form_title:"Same-day estimate", form_sub:'Tell us about your roof \u2014 <b>we text you back in under a minute.</b>',
   form_name:"Your name", form_name_ph:"First & last name", form_name_err:"Please enter your name.",
   form_phone:"Mobile number", form_phone_err:"Please enter a valid 10-digit number.",
@@ -966,12 +864,12 @@ en:{
   form_consent:"I agree to receive calls and text messages from Oak & Truss Roofing & Exteriors about my estimate. Msg & data rates may apply. Reply STOP to opt out.",
   form_btn:"Get my free estimate", form_fine:'No pushy sales. No pressure. Just an honest look at your roof. &nbsp;<a href="#" onclick="openLegal(&quot;pp&quot;);return false">Privacy</a> · <a href="#" onclick="openLegal(&quot;tos&quot;);return false">SMS Terms</a>',
   form_ok_title:"You're in!", form_ok_sub:"Oakley, our AI assistant, is texting you right now to lock in your inspection.",
-  form_ok_crm:"Lead synced to CRM · Chris & Guillermo notified",
-  storm_txt:'Storm or hail damage? We document everything and work with your insurance \u2014 <a href="tel:2817664227">call (281) 766-4227</a> for a free inspection.',
+  form_ok_crm:"Lead synced to CRM · Crew notified",
+  storm_txt:'Storm or hail damage? We document everything and work with your insurance \u2014 <a href="tel:3463994630">call (346) 399-4630</a> for a free inspection.',
   trust1:"Owens Corning® systems", trust1s:"Warranty-registered installs",
   trust2:"Most roofs done in 1 day", trust2s:"Yard cleaned, nails swept",
   trust3:"Photo & video documented", trust3s:"See your roof without climbing",
-  trust4:"Family-owned, local crew", trust4s:"Chris & Guillermo, Spring TX",
+  trust4:"Family-owned, local crew", trust4s:"Spring, TX",
   svc_eyebrow:"What we do", svc_h2:"Built to protect.<br>Designed to impress.",
   svc_lede:"From a single leak to a full storm restoration, one local crew handles it start to finish — and you'll see photos of everything we find and everything we fix.",
   svc1:"Roof replacement", svc1p:"Full tear-off and install of Owens Corning® shingle systems — most homes finished in one day.",
@@ -993,15 +891,6 @@ en:{
   why2:"Answers in minutes, not days", why2p:"Call, text, or chat — in English or Spanish — and get a real response fast, even after hours.",
   why3:"Insurance or out-of-pocket", why3p:"We've walked hundreds of Houston-area claims — and we'll build an affordable path if insurance says no.",
   why4:"Done-in-a-day standard", why4p:"Most replacements are torn off, installed, and cleaned up in a single day. You come home to a finished roof.",
-  quote_txt:'"A door-to-door salesman tried pointing out \u2018hail damage\u2019 and pushing a full replacement. They showed me <b>pictures and videos</b> of what was actually up there. Not one time did they use pushy tactics or fear-inducing language. <b>Rarely do you find a roofing business this honest.</b>"',
-  quote_who:"Verified Google review · Spring, TX", quote_badge:"Rated 5.0 across Google reviews",
-  rev_eyebrow:"Word on the street", rev_h2:"Neighbors don't<br>lie about roofs.", rev_sub:"Google reviews · Houston metro", rev_g:"Posted on Google",
-  rev1:'"They answered all my questions, replaced the roof, cleaned every nail from my yard — then registered my warranty for me. Couldn\u2019t be happier."',
-  rev2:'"After back-to-back hurricanes, Guillermo even fought to get my insurance to raise their assessment — then built me an affordable option when they wouldn\u2019t."',
-  rev3:'"New roof installed in one day. Responsive, courteous, efficient — my roof looks sharp. Stellar experience all the way around."',
-  rev4:'"Our neighbor recommended them after bad experiences with other companies. They gave us insurance and out-of-pocket options, finished in one day, and left our yard spotless."',
-  rev5:'"Memo made the entire process easy and stress-free. Installed in one day — it felt great coming home from work to a fresh new roof."',
-  rev6:'"Amazing job, easy process. Roof, fence, or any project on your home — I\u2019ll definitely be using them again."',
   ar_eyebrow:"Where we work", ar_h2:"Local crew.<br>Houston-metro reach.",
   ar_lede:"Based in Spring and rolling out across the north Houston metro every morning. If your city's on the list, your estimate is free.",
   ar_hq:"Home base", ar_more:"+ surrounding areas",
@@ -1011,7 +900,7 @@ en:{
   ai_lede:"Storms don't wait for business hours. When a homeowner reaches out at 10pm with a leak, Oakley answers in seconds — in English or Spanish — and books the inspection before the competition wakes up.",
   ai1:"Replies in under 60 seconds", ai1p:"Every call, text, and web lead gets an instant answer — leads answered in 5 minutes are far more likely to book.",
   ai2:"Fully bilingual", ai2p:"Oakley switches between English and Spanish mid-conversation — just like the crew does.",
-  ai3:"Books straight to the calendar", ai3p:"Inspections land on Chris & Guillermo's schedule automatically — no phone tag, no lost sticky notes.",
+  ai3:"Books straight to the calendar", ai3p:"Inspections land on the crew's schedule automatically — no phone tag, no lost sticky notes.",
   ai4:"Every lead lands in the CRM", ai4p:"Name, number, address, damage type, conversation history — captured and followed up automatically. Nothing slips.",
   ai_cta:"Chat with Oakley", ai_fine:"Powered by Starling AI — built for home-service teams", ph_online:"Responds instantly",
   fin_h2:'Let\u2019s take an honest<br>look at your roof.',
@@ -1021,21 +910,21 @@ en:{
   f_svc:"Services", f_co:"Company", f_contact:"Contact", f_privacy:"Privacy Policy", f_terms:"Terms of Service",
   f_loc:"Spring, Texas", f_lang:"English · Español", f_chat:"Chat with Oakley 24/7", f_starling:"Website concept & AI assistant by",
   pp_title:"Privacy Policy",
-  pp_body:'<span class="stamp">Effective July 6, 2026 · Oak &amp; Truss Roofing &amp; Exteriors · Spring, Texas</span><h4>Information We Collect</h4><p>When you request an estimate, call or text us, or talk with Oakley (our AI assistant), we collect the details you provide: name, phone number, email, property address, and information about your roof or project.</p><h4>How We Use It</h4><p>We use your information to respond to your request, schedule inspections, prepare estimates, coordinate your project, and send service updates. With your consent, we also send appointment reminders and follow-ups by text message.</p><h4>SMS / Text Messaging Program</h4><p>By opting in on our forms or by texting us first, you agree to receive informational and appointment-related text messages from Oak &amp; Truss Roofing &amp; Exteriors. <b>Message frequency varies. Message and data rates may apply. Reply STOP to opt out at any time, or HELP for help.</b> Consent to receive texts is <b>not</b> a condition of purchase.</p><p><b>Mobile opt-in data and SMS consent will not be shared with or sold to third parties or affiliates for marketing or promotional purposes.</b></p><h4>Sharing</h4><p>We do not sell your personal information. Trusted service providers (scheduling, messaging, and CRM software) process data only on our behalf and only to deliver our services.</p><h4>Retention &amp; Security</h4><p>We keep project records only as long as needed for service, warranty, and legal purposes, and we use reasonable safeguards to protect them.</p><h4>Your Choices</h4><p>You may opt out of texts at any time (reply STOP) and may request access to or deletion of your information by calling <b>(281) 766-4227</b>.</p>',
+  pp_body:'<span class="stamp">Effective July 6, 2026 · Oak &amp; Truss Roofing &amp; Exteriors · Spring, Texas</span><h4>Information We Collect</h4><p>When you request an estimate, call or text us, or talk with Oakley (our AI assistant), we collect the details you provide: name, phone number, email, property address, and information about your roof or project.</p><h4>How We Use It</h4><p>We use your information to respond to your request, schedule inspections, prepare estimates, coordinate your project, and send service updates. With your consent, we also send appointment reminders and follow-ups by text message.</p><h4>SMS / Text Messaging Program</h4><p>By opting in on our forms or by texting us first, you agree to receive informational and appointment-related text messages from Oak &amp; Truss Roofing &amp; Exteriors. <b>Message frequency varies. Message and data rates may apply. Reply STOP to opt out at any time, or HELP for help.</b> Consent to receive texts is <b>not</b> a condition of purchase.</p><p><b>Mobile opt-in data and SMS consent will not be shared with or sold to third parties or affiliates for marketing or promotional purposes.</b></p><h4>Sharing</h4><p>We do not sell your personal information. Trusted service providers (scheduling, messaging, and CRM software) process data only on our behalf and only to deliver our services.</p><h4>Retention &amp; Security</h4><p>We keep project records only as long as needed for service, warranty, and legal purposes, and we use reasonable safeguards to protect them.</p><h4>Your Choices</h4><p>You may opt out of texts at any time (reply STOP) and may request access to or deletion of your information by calling <b>(346) 399-4630</b>.</p>',
   tos_title:"Terms of Service",
-  tos_body:'<span class="stamp">Effective July 6, 2026 · Oak &amp; Truss Roofing &amp; Exteriors · Spring, Texas</span><h4>Agreement</h4><p>By using this website, our estimate forms, or our chat and text services, you agree to these terms.</p><h4>Inspections &amp; Estimates</h4><p>Inspections are free and no-pressure. Estimates are provided in good faith based on visible conditions and transparent market pricing data, and may be revised after a full inspection. No work begins until you sign a written agreement.</p><h4>SMS Terms</h4><p>Our text program sends appointment and service messages. <b>Message frequency varies. Message and data rates may apply. Reply STOP to cancel, HELP for help.</b> Consent is not a condition of purchase, and opt-in data is never sold or shared with third parties for marketing.</p><h4>Warranties</h4><p>Our workmanship is backed by a <b>10-year labor warranty</b>, and installed systems carry <b>Owens Corning manufacturer warranties of 25 to 50 years</b> depending on the product, subject to manufacturer terms. Our Leak-Free Guarantee means if an issue arises from our work, we make it right at no cost to you.</p><h4>Use of the Site</h4><p>Content on this site is for general information and is provided as is. Do not misuse the site, the chat assistant, or our messaging systems.</p><h4>Liability &amp; Governing Law</h4><p>To the extent permitted by law, we are not liable for indirect damages arising from use of this website. These terms are governed by the laws of the State of Texas.</p><h4>Contact</h4><p>Questions? Call or text <b>(281) 766-4227</b>.</p>',
+  tos_body:'<span class="stamp">Effective July 6, 2026 · Oak &amp; Truss Roofing &amp; Exteriors · Spring, Texas</span><h4>Agreement</h4><p>By using this website, our estimate forms, or our chat and text services, you agree to these terms.</p><h4>Inspections &amp; Estimates</h4><p>Inspections are free and no-pressure. Estimates are provided in good faith based on visible conditions and transparent market pricing data, and may be revised after a full inspection. No work begins until you sign a written agreement.</p><h4>SMS Terms</h4><p>Our text program sends appointment and service messages. <b>Message frequency varies. Message and data rates may apply. Reply STOP to cancel, HELP for help.</b> Consent is not a condition of purchase, and opt-in data is never sold or shared with third parties for marketing.</p><h4>Warranties</h4><p>Our workmanship is backed by a <b>10-year labor warranty</b>, and installed systems carry <b>Owens Corning manufacturer warranties of 25 to 50 years</b> depending on the product, subject to manufacturer terms. Our Leak-Free Guarantee means if an issue arises from our work, we make it right at no cost to you.</p><h4>Use of the Site</h4><p>Content on this site is for general information and is provided as is. Do not misuse the site, the chat assistant, or our messaging systems.</p><h4>Liability &amp; Governing Law</h4><p>To the extent permitted by law, we are not liable for indirect damages arising from use of this website. These terms are governed by the laws of the State of Texas.</p><h4>Contact</h4><p>Questions? Call or text <b>(346) 399-4630</b>.</p>',
   chat_online:"Online — replies instantly", chat_ph:"Type a message…",
   bar_call:"Call now", bar_chat:"Chat with Oakley"
 },
 es:{
   top_family:"Negocio familiar · Spring, TX", top_hours:"Lun–Vie 7am–8pm · Sáb 8am–2pm",
   brand_sub:"Soluciones de Techos",
-  nav_services:"Servicios", nav_process:"Nuestro Proceso", nav_reviews:"Reseñas", nav_areas:"Áreas de Servicio", nav_intern:"Pasantía", f_intern:"Pasantía de Verano", nav_cta:"Cotización gratis",
+  nav_services:"Servicios", nav_process:"Nuestro Proceso", nav_areas:"Áreas de Servicio", nav_intern:"Pasantía", f_intern:"Pasantía de Verano", nav_cta:"Cotización gratis",
   hero_flag:"Cotización el mismo día", hero_kicker:"Spring, Houston, Conroe, Tomball & The Woodlands",
   hero_h1:'Hecho a mano.<br>Hecho para durar.',
   hero_sub:'Empresa familiar de techos y exteriores con <strong>sistemas Owens Corning\u00AE</strong> \u2014 inspecciones documentadas con fotos, opciones honestas y la mayoría de los techos instalados <strong>en un solo día</strong>.',
   hero_cta1:"Obtener mi cotización gratis", hero_cta2:"Chatear con Oakley",
-  hero_proof1:"5.0 en Google", hero_proof2:"Aceptamos reclamos de aseguranza", hero_proof3:"English · Español",
+  hero_proof2:"Aceptamos reclamos de aseguranza", hero_proof3:"English · Español",
   form_title:"Cotización el mismo día", form_sub:'Cuéntenos de su techo \u2014 <b>le respondemos por texto en menos de un minuto.</b>',
   form_name:"Su nombre", form_name_ph:"Nombre y apellido", form_name_err:"Por favor escriba su nombre.",
   form_phone:"Número de celular", form_phone_err:"Ingrese un número válido de 10 dígitos.",
@@ -1044,12 +933,12 @@ es:{
   form_consent:"Acepto recibir llamadas y mensajes de texto de Oak & Truss Roofing & Exteriors sobre mi cotización. Pueden aplicar tarifas de mensajes y datos. Responda STOP para cancelar.",
   form_btn:"Obtener mi cotización gratis", form_fine:"Sin presión. Sin ventas agresivas. Solo la verdad sobre su techo.",
   form_ok_title:"¡Listo!", form_ok_sub:"Oakley, nuestro asistente de IA, le está enviando un texto ahora mismo para agendar su inspección.",
-  form_ok_crm:"Cliente registrado en el CRM · Chris y Guillermo notificados",
-  storm_txt:'¿Daños por tormenta o granizo? Documentamos todo y trabajamos con su aseguranza \u2014 <a href="tel:2817664227">llame al (281) 766-4227</a> para una inspección gratis.',
+  form_ok_crm:"Cliente registrado en el CRM · Equipo notificado",
+  storm_txt:'¿Daños por tormenta o granizo? Documentamos todo y trabajamos con su aseguranza \u2014 <a href="tel:3463994630">llame al (346) 399-4630</a> para una inspección gratis.',
   trust1:"Sistemas Owens Corning®", trust1s:"Garantía registrada",
   trust2:"Techos listos en 1 día", trust2s:"Patio limpio, sin clavos",
   trust3:"Documentado con foto y video", trust3s:"Vea su techo sin subirse",
-  trust4:"Negocio familiar y local", trust4s:"Chris y Guillermo, Spring TX",
+  trust4:"Negocio familiar y local", trust4s:"Spring, TX",
   svc_eyebrow:"Lo que hacemos", svc_h2:"Hecho para proteger.<br>Diseñado para impresionar.",
   svc_lede:"Desde una gotera hasta una restauración completa por tormenta — un solo equipo local lo maneja de principio a fin, con fotos de todo lo que encontramos y arreglamos.",
   svc1:"Reemplazo de techo", svc1p:"Remoción completa e instalación de sistemas Owens Corning® — la mayoría de las casas en un solo día.",
@@ -1071,15 +960,6 @@ es:{
   why2:"Respuestas en minutos, no días", why2p:"Llame, mande texto o chatee — en inglés o español — y reciba respuesta rápida, incluso fuera de horario.",
   why3:"Aseguranza o de su bolsillo", why3p:"Hemos manejado cientos de reclamos en Houston — y si la aseguranza dice que no, armamos un plan accesible.",
   why4:"Estándar de un solo día", why4p:"La mayoría de los reemplazos se remueven, instalan y limpian en un día. Usted llega a casa con el techo terminado.",
-  quote_txt:'"Un vendedor de puerta en puerta trató de señalar \u2018daño de granizo\u2019 para venderme un techo completo. Me mostraron <b>fotos y videos</b> de lo que realmente había arriba. Nunca usaron tácticas de presión ni de miedo. <b>Pocas veces se encuentra una empresa de techos tan honesta.</b>"',
-  quote_who:"Reseña verificada de Google · Spring, TX", quote_badge:"Calificación 5.0 en reseñas de Google",
-  rev_eyebrow:"Lo que dice la gente", rev_h2:"Los vecinos no mienten<br>sobre sus techos.", rev_sub:"Reseñas de Google · Houston", rev_g:"Publicado en Google",
-  rev1:'"Respondieron todas mis preguntas, reemplazaron el techo, limpiaron cada clavo del patio — y registraron mi garantía por mí. No podría estar más feliz."',
-  rev2:'"Después de dos huracanes seguidos, Guillermo hasta peleó para que mi aseguranza subiera su evaluación — y cuando no quisieron, me armó una opción accesible."',
-  rev3:'"Techo nuevo instalado en un día. Atentos, corteses, eficientes — mi techo se ve increíble. Una experiencia estelar de principio a fin."',
-  rev4:'"Nuestro vecino los recomendó después de malas experiencias con otras compañías. Nos dieron opciones con aseguranza y de bolsillo, terminaron en un día y dejaron el patio impecable."',
-  rev5:'"Memo hizo todo el proceso fácil y sin estrés. Instalado en un día — qué gusto llegar del trabajo a un techo nuevecito."',
-  rev6:'"Trabajo increíble, proceso fácil. Techo, cerca o cualquier proyecto de su casa — sin duda los volveré a usar."',
   ar_eyebrow:"Dónde trabajamos", ar_h2:"Equipo local.<br>Alcance en todo Houston.",
   ar_lede:"Con base en Spring y trabajando por todo el norte del área de Houston cada mañana. Si su ciudad está en la lista, su cotización es gratis.",
   ar_hq:"Base principal", ar_more:"+ áreas cercanas",
@@ -1089,7 +969,7 @@ es:{
   ai_lede:"Las tormentas no esperan el horario de oficina. Cuando un cliente escribe a las 10pm con una gotera, Oakley responde en segundos — en inglés o español — y agenda la inspección antes de que despierte la competencia.",
   ai1:"Responde en menos de 60 segundos", ai1p:"Cada llamada, texto y formulario recibe respuesta instantánea — los clientes atendidos en 5 minutos agendan mucho más.",
   ai2:"Totalmente bilingüe", ai2p:"Oakley cambia entre inglés y español a mitad de la conversación — igual que el equipo.",
-  ai3:"Agenda directo al calendario", ai3p:"Las inspecciones caen automáticamente en la agenda de Chris y Guillermo — sin llamadas perdidas ni notas extraviadas.",
+  ai3:"Agenda directo al calendario", ai3p:"Las inspecciones caen automáticamente en la agenda del equipo — sin llamadas perdidas ni notas extraviadas.",
   ai4:"Cada cliente queda en el CRM", ai4p:"Nombre, número, dirección, tipo de daño e historial — capturado y con seguimiento automático. Nada se pierde.",
   ai_cta:"Chatear con Oakley", ai_fine:"Con tecnología de Starling AI — hecho para equipos de servicios del hogar", ph_online:"Responde al instante",
   fin_h2:'Echemos un vistazo<br>honesto a su techo.',
@@ -1099,9 +979,9 @@ es:{
   f_svc:"Servicios", f_co:"Compañía", f_contact:"Contacto", f_privacy:"Política de Privacidad", f_terms:"Términos de Servicio",
   f_loc:"Spring, Texas", f_lang:"English · Español", f_chat:"Chatee con Oakley 24/7", f_starling:"Sitio web y asistente de IA por",
   pp_title:"Política de Privacidad",
-  pp_body:'<span class="stamp">Vigente desde el 6 de julio de 2026 · Oak &amp; Truss Roofing &amp; Exteriors · Spring, Texas</span><h4>Información que recopilamos</h4><p>Cuando solicita una cotización, nos llama o envía un texto, o conversa con Oakley (nuestro asistente de IA), recopilamos los datos que usted proporciona: nombre, teléfono, correo electrónico, dirección de la propiedad e información sobre su techo o proyecto.</p><h4>Cómo la usamos</h4><p>Usamos su información para responder a su solicitud, agendar inspecciones, preparar cotizaciones, coordinar su proyecto y enviar actualizaciones de servicio. Con su consentimiento, también enviamos recordatorios de cita y seguimientos por mensaje de texto.</p><h4>Programa de mensajes SMS</h4><p>Al aceptar en nuestros formularios o al enviarnos un texto primero, usted acepta recibir mensajes informativos y de citas de Oak &amp; Truss Roofing &amp; Exteriors. <b>La frecuencia de mensajes varía. Pueden aplicar tarifas de mensajes y datos. Responda STOP para cancelar en cualquier momento, o HELP para ayuda.</b> El consentimiento <b>no</b> es condición de compra.</p><p><b>Sus datos de suscripción móvil y consentimiento de SMS no serán compartidos ni vendidos a terceros o afiliados con fines de marketing o promoción.</b></p><h4>Compartir información</h4><p>No vendemos su información personal. Proveedores de confianza (software de agenda, mensajería y CRM) procesan datos solo en nuestro nombre y solo para prestar nuestros servicios.</p><h4>Retención y seguridad</h4><p>Conservamos los registros del proyecto solo el tiempo necesario para fines de servicio, garantía y legales, con medidas razonables de protección.</p><h4>Sus opciones</h4><p>Puede cancelar los textos en cualquier momento (responda STOP) y puede solicitar acceso o eliminación de su información llamando al <b>(281) 766-4227</b>.</p>',
+  pp_body:'<span class="stamp">Vigente desde el 6 de julio de 2026 · Oak &amp; Truss Roofing &amp; Exteriors · Spring, Texas</span><h4>Información que recopilamos</h4><p>Cuando solicita una cotización, nos llama o envía un texto, o conversa con Oakley (nuestro asistente de IA), recopilamos los datos que usted proporciona: nombre, teléfono, correo electrónico, dirección de la propiedad e información sobre su techo o proyecto.</p><h4>Cómo la usamos</h4><p>Usamos su información para responder a su solicitud, agendar inspecciones, preparar cotizaciones, coordinar su proyecto y enviar actualizaciones de servicio. Con su consentimiento, también enviamos recordatorios de cita y seguimientos por mensaje de texto.</p><h4>Programa de mensajes SMS</h4><p>Al aceptar en nuestros formularios o al enviarnos un texto primero, usted acepta recibir mensajes informativos y de citas de Oak &amp; Truss Roofing &amp; Exteriors. <b>La frecuencia de mensajes varía. Pueden aplicar tarifas de mensajes y datos. Responda STOP para cancelar en cualquier momento, o HELP para ayuda.</b> El consentimiento <b>no</b> es condición de compra.</p><p><b>Sus datos de suscripción móvil y consentimiento de SMS no serán compartidos ni vendidos a terceros o afiliados con fines de marketing o promoción.</b></p><h4>Compartir información</h4><p>No vendemos su información personal. Proveedores de confianza (software de agenda, mensajería y CRM) procesan datos solo en nuestro nombre y solo para prestar nuestros servicios.</p><h4>Retención y seguridad</h4><p>Conservamos los registros del proyecto solo el tiempo necesario para fines de servicio, garantía y legales, con medidas razonables de protección.</p><h4>Sus opciones</h4><p>Puede cancelar los textos en cualquier momento (responda STOP) y puede solicitar acceso o eliminación de su información llamando al <b>(346) 399-4630</b>.</p>',
   tos_title:"Términos de Servicio",
-  tos_body:'<span class="stamp">Vigente desde el 6 de julio de 2026 · Oak &amp; Truss Roofing &amp; Exteriors · Spring, Texas</span><h4>Acuerdo</h4><p>Al usar este sitio web, nuestros formularios de cotización o nuestros servicios de chat y texto, usted acepta estos términos.</p><h4>Inspecciones y cotizaciones</h4><p>Las inspecciones son gratuitas y sin presión. Las cotizaciones se preparan de buena fe según las condiciones visibles y datos transparentes de precios de mercado, y pueden ajustarse después de una inspección completa. Ningún trabajo comienza hasta que usted firme un acuerdo por escrito.</p><h4>Términos de SMS</h4><p>Nuestro programa de textos envía mensajes de citas y servicio. <b>La frecuencia de mensajes varía. Pueden aplicar tarifas de mensajes y datos. Responda STOP para cancelar, HELP para ayuda.</b> El consentimiento no es condición de compra, y los datos de suscripción nunca se venden ni comparten con terceros para marketing.</p><h4>Garantías</h4><p>Nuestra mano de obra está respaldada por una <b>garantía de mano de obra de 10 años</b>, y los sistemas instalados incluyen <b>garantías del fabricante Owens Corning de 25 a 50 años</b> según el producto, sujetas a los términos del fabricante. Nuestra Garantía Libre de Filtraciones significa que si surge un problema por nuestro trabajo, lo corregimos sin costo para usted.</p><h4>Uso del sitio</h4><p>El contenido de este sitio es de carácter informativo y se ofrece tal cual. No haga mal uso del sitio, del asistente de chat ni de nuestros sistemas de mensajería.</p><h4>Responsabilidad y ley aplicable</h4><p>En la medida permitida por la ley, no somos responsables de daños indirectos derivados del uso de este sitio. Estos términos se rigen por las leyes del Estado de Texas.</p><h4>Contacto</h4><p>¿Preguntas? Llame o envíe un texto al <b>(281) 766-4227</b>.</p>',
+  tos_body:'<span class="stamp">Vigente desde el 6 de julio de 2026 · Oak &amp; Truss Roofing &amp; Exteriors · Spring, Texas</span><h4>Acuerdo</h4><p>Al usar este sitio web, nuestros formularios de cotización o nuestros servicios de chat y texto, usted acepta estos términos.</p><h4>Inspecciones y cotizaciones</h4><p>Las inspecciones son gratuitas y sin presión. Las cotizaciones se preparan de buena fe según las condiciones visibles y datos transparentes de precios de mercado, y pueden ajustarse después de una inspección completa. Ningún trabajo comienza hasta que usted firme un acuerdo por escrito.</p><h4>Términos de SMS</h4><p>Nuestro programa de textos envía mensajes de citas y servicio. <b>La frecuencia de mensajes varía. Pueden aplicar tarifas de mensajes y datos. Responda STOP para cancelar, HELP para ayuda.</b> El consentimiento no es condición de compra, y los datos de suscripción nunca se venden ni comparten con terceros para marketing.</p><h4>Garantías</h4><p>Nuestra mano de obra está respaldada por una <b>garantía de mano de obra de 10 años</b>, y los sistemas instalados incluyen <b>garantías del fabricante Owens Corning de 25 a 50 años</b> según el producto, sujetas a los términos del fabricante. Nuestra Garantía Libre de Filtraciones significa que si surge un problema por nuestro trabajo, lo corregimos sin costo para usted.</p><h4>Uso del sitio</h4><p>El contenido de este sitio es de carácter informativo y se ofrece tal cual. No haga mal uso del sitio, del asistente de chat ni de nuestros sistemas de mensajería.</p><h4>Responsabilidad y ley aplicable</h4><p>En la medida permitida por la ley, no somos responsables de daños indirectos derivados del uso de este sitio. Estos términos se rigen por las leyes del Estado de Texas.</p><h4>Contacto</h4><p>¿Preguntas? Llame o envíe un texto al <b>(346) 399-4630</b>.</p>',
   chat_online:"En línea — responde al instante", chat_ph:"Escriba un mensaje…",
   bar_call:"Llamar ahora", bar_chat:"Chatear con Oakley"
 }};
@@ -1130,50 +1010,50 @@ en:{
   greet:"Hey there! 👋 I'm Oakley, the 24/7 assistant at Oak & Truss. I can get you a free, photo-documented roof inspection in about 60 seconds. What's going on with your roof?",
   chips_start:["🏠 Full replacement","🔧 Repair / leak","⛈️ Storm or hail damage","💲 Pricing question","🇲🇽 Hablar en español"],
   replace:"Great — a full replacement is our specialty. We install Owens Corning® systems and most homes are done in a single day, yard swept and all. Let's get your free inspection booked. What's your first name?",
-  repair:"Got it — leaks don't wait, so let's move fast. Chris or Guillermo will get on the roof, film everything, and show you exactly what's going on before any work. What's your first name?",
+  repair:"Got it — leaks don't wait, so let's move fast. Our crew will get on the roof, film everything, and show you exactly what's going on before any work. What's your first name?",
   storm:"I'm sorry you're dealing with that. Good news: we document hail and wind damage with photos and video — exactly what your insurance claim needs — and the inspection is free. What's your first name?",
   price:"Fair question! Every roof is different, so we don't guess — we inspect for free, document everything, and give you real numbers for both insurance and out-of-pocket routes. No pushy sales, ever. Want me to book your free inspection? What's your first name?",
   hours:"The crew works Mon–Fri 7am–8pm and Saturdays 8am–2pm. But I'm here 24/7 — I can get you on the schedule right now. What's your first name?",
   area:"We cover Spring, Houston, The Woodlands, Conroe, Tomball, Klein, Cypress and nearby. If you're close, the inspection is free! What's your first name?",
-  human:"Absolutely — Chris and Guillermo love talking to homeowners directly. Call or text (281) 766-4227 anytime. Or I can book your inspection right now and they'll confirm personally. What's your first name?",
+  human:"Absolutely — the crew loves talking to homeowners directly. Call or text (346) 399-4630 anytime. Or I can book your inspection right now and they'll confirm personally. What's your first name?",
   fallback:"I hear you! The fastest way to get real answers is a free inspection — photos, video, honest options, zero pressure. Want me to set that up? What's your first name?",
   ask_phone:(n)=>`Nice to meet you, ${n}! What's the best mobile number to text your confirmation to?`,
   bad_phone:"Hmm, that doesn't look like a full number — mind sending the 10-digit mobile? (e.g. 281-555-0123)",
   ask_time:"Perfect. When works best for your free inspection?",
   chips_time:["Tomorrow morning","Tomorrow afternoon","Saturday"],
-  confirm:(n,t)=>`You're all set, ${n}! 🎉 Your free inspection is penciled in for <b>${t.toLowerCase()}</b>. Chris & Guillermo just got a text with your info, and you'll receive a confirmation shortly. They'll bring photos and video of everything they find.`,
+  confirm:(n,t)=>`You're all set, ${n}! 🎉 Your free inspection is penciled in for <b>${t.toLowerCase()}</b>. The crew just got a text with your info, and you'll receive a confirmation shortly. They'll bring photos and video of everything they find.`,
   crm:"Lead captured → synced to CRM → team notified",
   post:"Anything else I can help with while you're here? Storm damage questions, insurance, materials — I'm all ears. 🏠",
   chips_done:["⛈️ Insurance claim tips","🏠 What shingles do you use?","✅ That's all, thanks!"],
-  ins_tip:"Quick tips: ① Don't sign anything at the door. ② Get damage documented BEFORE filing — that's what our free inspection is for. ③ We meet your adjuster on-site so nothing gets missed. Meagan's insurance lowballed her and Guillermo fought to get it raised. That's the standard here.",
+  ins_tip:"Quick tips: ① Don't sign anything at the door. ② Get damage documented BEFORE filing — that's what our free inspection is for. ③ We meet your adjuster on-site so nothing gets missed. If your insurance lowballs you, we fight to get it raised. That's the standard here.",
   shingles:"We install Owens Corning® shingle systems — Duration® series is the crowd favorite: great wind rating for Texas storms, solid warranty, sharp curb appeal. We register your warranty for you before we leave.",
-  bye:"You got it! If anything comes up, I'm here 24/7 — or call/text the crew at (281) 766-4227. Have a great one! 🤙",
-  form_greet:(n,s)=>`Hi ${n}! 👋 Oakley here — just got your request for <b>${s.toLowerCase()}</b>. I've already pinged Chris & Guillermo. Let's lock in your free inspection: when works best?`,
+  bye:"You got it! If anything comes up, I'm here 24/7 — or call/text the crew at (346) 399-4630. Have a great one! 🤙",
+  form_greet:(n,s)=>`Hi ${n}! 👋 Oakley here — just got your request for <b>${s.toLowerCase()}</b>. I've already pinged the crew. Let's lock in your free inspection: when works best?`,
   switched:"¡Claro que sí! Seguimos en español. 🙌"
 },
 es:{
   greet:"¡Hola! 👋 Soy Oakley, el asistente 24/7 de Oak & Truss. Puedo agendarle una inspección gratis de su techo, documentada con fotos, en menos de un minuto. ¿Qué está pasando con su techo?",
   chips_start:["🏠 Reemplazo completo","🔧 Reparación / gotera","⛈️ Daño de tormenta o granizo","💲 Pregunta de precio","🇺🇸 Switch to English"],
   replace:"Perfecto — el reemplazo completo es nuestra especialidad. Instalamos sistemas Owens Corning® y la mayoría de las casas quedan listas en un solo día, con el patio barrido. Vamos a agendar su inspección gratis. ¿Cuál es su nombre?",
-  repair:"Entendido — las goteras no esperan, así que vamos rápido. Chris o Guillermo suben al techo, graban todo, y le muestran exactamente qué pasa antes de cualquier trabajo. ¿Cuál es su nombre?",
+  repair:"Entendido — las goteras no esperan, así que vamos rápido. Nuestro equipo sube al techo, graba todo, y le muestra exactamente qué pasa antes de cualquier trabajo. ¿Cuál es su nombre?",
   storm:"Lamento que esté pasando por eso. La buena noticia: documentamos el daño de granizo y viento con fotos y video — justo lo que su reclamo de aseguranza necesita — y la inspección es gratis. ¿Cuál es su nombre?",
   price:"¡Buena pregunta! Cada techo es diferente, así que no adivinamos — inspeccionamos gratis, documentamos todo, y le damos números reales tanto por aseguranza como de su bolsillo. Sin presión, nunca. ¿Le agendo su inspección gratis? ¿Cuál es su nombre?",
   hours:"El equipo trabaja Lun–Vie 7am–8pm y sábados 8am–2pm. Pero yo estoy aquí 24/7 — lo puedo poner en la agenda ahora mismo. ¿Cuál es su nombre?",
   area:"Cubrimos Spring, Houston, The Woodlands, Conroe, Tomball, Klein, Cypress y alrededores. Si está cerca, ¡la inspección es gratis! ¿Cuál es su nombre?",
-  human:"¡Claro! A Chris y Guillermo les encanta hablar directo con los clientes. Llame o mande texto al (281) 766-4227 cuando guste. O le agendo la inspección ahora y ellos confirman personalmente. ¿Cuál es su nombre?",
+  human:"¡Claro! Al equipo le encanta hablar directo con los clientes. Llame o mande texto al (346) 399-4630 cuando guste. O le agendo la inspección ahora y ellos confirman personalmente. ¿Cuál es su nombre?",
   fallback:"¡Lo entiendo! La forma más rápida de tener respuestas reales es una inspección gratis — fotos, video, opciones honestas, cero presión. ¿Se la agendo? ¿Cuál es su nombre?",
   ask_phone:(n)=>`¡Mucho gusto, ${n}! ¿A qué número de celular le mando la confirmación por texto?`,
   bad_phone:"Mmm, ese número se ve incompleto — ¿me manda los 10 dígitos? (ej. 281-555-0123)",
   ask_time:"Perfecto. ¿Cuándo le queda mejor la inspección gratis?",
   chips_time:["Mañana en la mañana","Mañana en la tarde","El sábado"],
-  confirm:(n,t)=>`¡Listo, ${n}! 🎉 Su inspección gratis quedó apuntada para <b>${t.toLowerCase()}</b>. Chris y Guillermo acaban de recibir un texto con su información, y le llega su confirmación en un momento. Llevarán fotos y video de todo lo que encuentren.`,
+  confirm:(n,t)=>`¡Listo, ${n}! 🎉 Su inspección gratis quedó apuntada para <b>${t.toLowerCase()}</b>. El equipo acaba de recibir un texto con su información, y le llega su confirmación en un momento. Llevarán fotos y video de todo lo que encuentren.`,
   crm:"Cliente capturado → registrado en el CRM → equipo notificado",
   post:"¿Algo más en lo que pueda ayudar? Preguntas de tormentas, aseguranza, materiales — soy todo oídos. 🏠",
   chips_done:["⛈️ Consejos de aseguranza","🏠 ¿Qué tejas usan?","✅ Eso es todo, ¡gracias!"],
-  ins_tip:"Consejos rápidos: ① No firme nada en la puerta. ② Documente el daño ANTES de meter el reclamo — para eso es nuestra inspección gratis. ③ Nos reunimos con su ajustador en su casa para que nada se pase. A Meagan la aseguranza le ofreció poco y Guillermo peleó para subirlo. Ese es el estándar aquí.",
+  ins_tip:"Consejos rápidos: ① No firme nada en la puerta. ② Documente el daño ANTES de meter el reclamo — para eso es nuestra inspección gratis. ③ Nos reunimos con su ajustador en su casa para que nada se pase. Si la aseguranza le ofrece poco, peleamos para subirlo. Ese es el estándar aquí.",
   shingles:"Instalamos sistemas de tejas Owens Corning® — la serie Duration® es la favorita: excelente resistencia al viento para las tormentas de Texas, buena garantía y muy buena presentación. Registramos su garantía por usted antes de irnos.",
-  bye:"¡Con gusto! Si algo se ofrece, aquí estoy 24/7 — o llame/mande texto al equipo al (281) 766-4227. ¡Que le vaya bien! 🤙",
-  form_greet:(n,s)=>`¡Hola ${n}! 👋 Soy Oakley — acabo de recibir su solicitud de <b>${s.toLowerCase()}</b>. Ya le avisé a Chris y Guillermo. Vamos a apartar su inspección gratis: ¿cuándo le queda mejor?`,
+  bye:"¡Con gusto! Si algo se ofrece, aquí estoy 24/7 — o llame/mande texto al equipo al (346) 399-4630. ¡Que le vaya bien! 🤙",
+  form_greet:(n,s)=>`¡Hola ${n}! 👋 Soy Oakley — acabo de recibir su solicitud de <b>${s.toLowerCase()}</b>. Ya le avisé al equipo. Vamos a apartar su inspección gratis: ¿cuándo le queda mejor?`,
   switched:"Sure thing! Switching to English. 🙌"
 }};
 
@@ -1324,7 +1204,7 @@ en:[
   ['in',"Hey, I think my roof is leaking near the chimney after tonight's storm 😰"],
   ['out',"I'm so sorry — let's get on it. I'm Oakley with Oak & Truss 👋 Is water actively coming in right now?"],
   ['in',"A little into the attic"],
-  ['out',"Got it. Put a bucket under it and stay off the attic decking. I can have Chris or Guillermo out for a free documented inspection tomorrow at 8 AM — should I lock it in?"],
+  ['out',"Got it. Put a bucket under it and stay off the attic decking. I can have the crew out for a free documented inspection tomorrow at 8 AM — should I lock it in?"],
   ['in',"Yes please!! 🙏"],
   ['out',"Done ✅ You're on the schedule for 8 AM. You'll get photos + video of everything we find, and we'll walk you through insurance options."],
   ['sys','Lead synced to CRM · Crew notified · 10:49 PM']
@@ -1334,7 +1214,7 @@ es:[
   ['in',"Hola, creo que mi techo está goteando cerca de la chimenea después de la tormenta 😰"],
   ['out',"Lo siento mucho — vamos a resolverlo. Soy Oakley de Oak & Truss 👋 ¿Está entrando agua en este momento?"],
   ['in',"Un poco al ático"],
-  ['out',"Entendido. Ponga una cubeta y no pise el piso del ático. Puedo mandar a Chris o Guillermo mañana a las 8 AM para una inspección gratis documentada — ¿la aparto?"],
+  ['out',"Entendido. Ponga una cubeta y no pise el piso del ático. Puedo mandar al equipo mañana a las 8 AM para una inspección gratis documentada — ¿la aparto?"],
   ['in',"¡¡Sí por favor!! 🙏"],
   ['out',"Listo ✅ Quedó agendado para las 8 AM. Recibirá fotos y video de todo lo que encontremos, y le explicamos sus opciones de aseguranza."],
   ['sys','Cliente registrado en CRM · Equipo notificado · 10:49 PM']

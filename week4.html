@@ -417,7 +417,7 @@ function renderLob(){
     const r = s<=1 ? ["😬","Clipboard Holder","You've got the title energy, not the leader energy — yet. Re-read the Playbook and run it back."]
           : s<=3 ? ["🌱","Rising Leader","Good instincts showing up. Tuesday's session will lock them in."]
           : s===4 ? ["⭐","Team Captain","Your crew would follow you down any street in Spring."]
-          : ["🏆","Born Leader","Five for five. Guillermo and Chris should be nervous about their jobs."];
+          : ["🏆","Born Leader","Five for five. The founders should be nervous about their jobs."];
     box.innerHTML = `<div class="result">
       <div class="remo">${r[0]}</div><div class="rtitle">${r[1]}</div>
       <p>You made the leader move <strong>${s} / ${LOB.length}</strong> times. ${r[2]}</p>
