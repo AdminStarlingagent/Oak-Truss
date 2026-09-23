@@ -192,7 +192,7 @@ html[lang=es] .hero h1{font-size:clamp(50px,5.6vw,82px)} /* Spanish lines run lo
 .pitch-top{clip-path:polygon(0 0,100% 3.4vw,100% 100%,0 100%);margin-top:-3.4vw;padding-top:calc(104px + 3.4vw)}
 
 /* ---------- services: a ruled sheet, not floating cards ---------- */
-.svc-grid{display:grid;grid-template-columns:repeat(4,1fr);margin-top:52px;border-top:3px solid #000;border-left:1px solid var(--bone-2)}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);margin-top:52px;border-top:3px solid #000;border-left:1px solid var(--bone-2)}
 .svc{padding:30px 26px 34px;border-right:1px solid var(--bone-2);border-bottom:1px solid var(--bone-2)}
 .svc .ico{color:var(--copper-ink);margin-bottom:18px}
 .svc .ico svg{width:30px;height:30px}
@@ -504,6 +504,7 @@ footer::before{content:"";display:block;height:8px;background:var(--grain) 0 20%
             <select id="in-service">
               <option data-i18n="svc_opt1">Roof replacement</option>
               <option data-i18n="svc_opt2">Roof repair / leak</option>
+              <option data-i18n="svc_opt6">Roof maintenance / sealant</option>
               <option data-i18n="svc_opt3">Storm or insurance claim</option>
               <option data-i18n="svc_opt4">Gutters, siding or fencing</option>
               <option data-i18n="svc_opt5">Just an inspection</option>
@@ -565,6 +566,11 @@ footer::before{content:"";display:block;height:8px;background:var(--grain) 0 20%
         <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
         <h3 data-i18n="svc2">Roof repair</h3>
         <p data-i18n="svc2p">Leaks, missing shingles, flashing and decking — fixed right, documented with photos.</p>
+      </div>
+      <div class="svc rv">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.7l5.66 5.66a8 8 0 1 1-11.31 0z"/><path d="M8.5 14.5a3.5 3.5 0 0 0 3.5 3.5"/></svg></div>
+        <h3 data-i18n="svc9">Roof maintenance &amp; sealant</h3>
+        <p data-i18n="svc9p">Tune-ups, resealing, and a protective sealant coating that can add 5–7 years to the life of your roof.</p>
       </div>
       <div class="svc rv">
         <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2 3 14h7l-1 8 11-13h-7l1-7z"/></svg></div>
@@ -764,6 +770,7 @@ footer::before{content:"";display:block;height:8px;background:var(--grain) 0 20%
         <ul>
           <li><a href="#services" data-i18n="svc1">Roof replacement</a></li>
           <li><a href="#services" data-i18n="svc2">Roof repair</a></li>
+          <li><a href="#services" data-i18n="svc9">Roof maintenance &amp; sealant</a></li>
           <li><a href="#services" data-i18n="svc3">Storm &amp; insurance</a></li>
           <li><a href="#services" data-i18n="svc4">Gutter installation</a></li>
           <li><a href="#services" data-i18n="svc5">Siding installation</a></li>
@@ -860,7 +867,7 @@ en:{
   form_name:"Your name", form_name_ph:"First & last name", form_name_err:"Please enter your name.",
   form_phone:"Mobile number", form_phone_err:"Please enter a valid 10-digit number.",
   form_service:"What do you need?",
-  svc_opt1:"Roof replacement", svc_opt2:"Roof repair / leak", svc_opt3:"Storm or insurance claim", svc_opt4:"Gutters, siding or fencing", svc_opt5:"Just an inspection",
+  svc_opt1:"Roof replacement", svc_opt2:"Roof repair / leak", svc_opt3:"Storm or insurance claim", svc_opt4:"Gutters, siding or fencing", svc_opt5:"Just an inspection", svc_opt6:"Roof maintenance / sealant",
   form_consent:"I agree to receive calls and text messages from Oak & Truss Roofing & Exteriors about my estimate. Msg & data rates may apply. Reply STOP to opt out.",
   form_btn:"Get my free estimate", form_fine:'No pushy sales. No pressure. Just an honest look at your roof. &nbsp;<a href="#" onclick="openLegal(&quot;pp&quot;);return false">Privacy</a> · <a href="#" onclick="openLegal(&quot;tos&quot;);return false">SMS Terms</a>',
   form_ok_title:"You're in!", form_ok_sub:"Oakley, our AI assistant, is texting you right now to lock in your inspection.",
@@ -880,6 +887,7 @@ en:{
   svc6:"Attic ventilation", svc6p:"Proper airflow that extends shingle life and cuts summer cooling bills.",
   svc7:"Insulation & fascia", svc7p:"Fascia lifts, soffit work and insulation that finish the job properly.",
   svc8:"Fencing & commercial", svc8p:"Fence builds and flat-roof commercial systems from the same trusted crew.",
+  svc9:"Roof maintenance & sealant", svc9p:"Tune-ups, resealing, and a protective sealant coating that can add 5–7 years to the life of your roof.",
   pr_eyebrow:"The RoofBuds way", pr_h2:"No scare tactics.<br>No pressure. Just the facts.",
   pr_lede:"We’ll show you what we find, explain what actually needs attention, and give you clear options — backed by photo documentation from start to finish.",
   pr1:"Inspect & document", pr1p:"We get on the roof and film everything — every soft spot, every hail hit — so you see it without risking the climb.", pr1t:"Photos + video, same day",
@@ -929,7 +937,7 @@ es:{
   form_name:"Su nombre", form_name_ph:"Nombre y apellido", form_name_err:"Por favor escriba su nombre.",
   form_phone:"Número de celular", form_phone_err:"Ingrese un número válido de 10 dígitos.",
   form_service:"¿Qué necesita?",
-  svc_opt1:"Reemplazo de techo", svc_opt2:"Reparación / gotera", svc_opt3:"Tormenta o reclamo de aseguranza", svc_opt4:"Canaletas, siding o cercas", svc_opt5:"Solo una inspección",
+  svc_opt1:"Reemplazo de techo", svc_opt2:"Reparación / gotera", svc_opt3:"Tormenta o reclamo de aseguranza", svc_opt4:"Canaletas, siding o cercas", svc_opt5:"Solo una inspección", svc_opt6:"Mantenimiento / sellador",
   form_consent:"Acepto recibir llamadas y mensajes de texto de Oak & Truss Roofing & Exteriors sobre mi cotización. Pueden aplicar tarifas de mensajes y datos. Responda STOP para cancelar.",
   form_btn:"Obtener mi cotización gratis", form_fine:"Sin presión. Sin ventas agresivas. Solo la verdad sobre su techo.",
   form_ok_title:"¡Listo!", form_ok_sub:"Oakley, nuestro asistente de IA, le está enviando un texto ahora mismo para agendar su inspección.",
@@ -949,6 +957,7 @@ es:{
   svc6:"Ventilación de ático", svc6p:"Flujo de aire correcto que alarga la vida de las tejas y baja el costo del aire acondicionado.",
   svc7:"Aislamiento y fascia", svc7p:"Fascia, soffit y aislamiento para terminar el trabajo como debe ser.",
   svc8:"Cercas y comercial", svc8p:"Construcción de cercas y techos comerciales planos con el mismo equipo de confianza.",
+  svc9:"Mantenimiento y sellador", svc9p:"Mantenimiento, resellado y un sellador protector que puede darle a su techo de 5 a 7 años más de vida.",
   pr_eyebrow:"El método RoofBuds", pr_h2:"Sin tácticas de miedo.<br>Sin presión. Solo los hechos.",
   pr_lede:"Le mostramos lo que encontramos, le explicamos qué necesita atención realmente y le damos opciones claras — respaldadas con documentación fotográfica de principio a fin.",
   pr1:"Inspeccionar y documentar", pr1p:"Subimos al techo y grabamos todo — cada punto débil, cada golpe de granizo — para que usted lo vea sin arriesgarse.", pr1t:"Fotos + video, el mismo día",
@@ -1008,10 +1017,11 @@ function setLang(l){
 const CHAT = {
 en:{
   greet:"Hey there! 👋 I'm Oakley, the 24/7 assistant at Oak & Truss. I can get you a free, photo-documented roof inspection in about 60 seconds. What's going on with your roof?",
-  chips_start:["🏠 Full replacement","🔧 Repair / leak","⛈️ Storm or hail damage","💲 Pricing question","🇲🇽 Hablar en español"],
+  chips_start:["🏠 Full replacement","🔧 Repair / leak","🛡️ Maintenance / sealant","⛈️ Storm or hail damage","💲 Pricing question","🇲🇽 Hablar en español"],
   replace:"Great — a full replacement is our specialty. We install Owens Corning® systems and most homes are done in a single day, yard swept and all. Let's get your free inspection booked. What's your first name?",
   repair:"Got it — leaks don't wait, so let's move fast. Our crew will get on the roof, film everything, and show you exactly what's going on before any work. What's your first name?",
   storm:"I'm sorry you're dealing with that. Good news: we document hail and wind damage with photos and video — exactly what your insurance claim needs — and the inspection is free. What's your first name?",
+  seal:"Smart move — a protective sealant on a sound roof can add 5–7 years of life for a fraction of a replacement. We inspect first (free), seal what qualifies, and document it with photos. What's your first name?",
   price:"Fair question! Every roof is different, so we don't guess — we inspect for free, document everything, and give you real numbers for both insurance and out-of-pocket routes. No pushy sales, ever. Want me to book your free inspection? What's your first name?",
   hours:"The crew works Mon–Fri 7am–8pm and Saturdays 8am–2pm. But I'm here 24/7 — I can get you on the schedule right now. What's your first name?",
   area:"We cover Spring, Houston, The Woodlands, Conroe, Tomball, Klein, Cypress and nearby. If you're close, the inspection is free! What's your first name?",
@@ -1033,10 +1043,11 @@ en:{
 },
 es:{
   greet:"¡Hola! 👋 Soy Oakley, el asistente 24/7 de Oak & Truss. Puedo agendarle una inspección gratis de su techo, documentada con fotos, en menos de un minuto. ¿Qué está pasando con su techo?",
-  chips_start:["🏠 Reemplazo completo","🔧 Reparación / gotera","⛈️ Daño de tormenta o granizo","💲 Pregunta de precio","🇺🇸 Switch to English"],
+  chips_start:["🏠 Reemplazo completo","🔧 Reparación / gotera","🛡️ Mantenimiento / sellador","⛈️ Daño de tormenta o granizo","💲 Pregunta de precio","🇺🇸 Switch to English"],
   replace:"Perfecto — el reemplazo completo es nuestra especialidad. Instalamos sistemas Owens Corning® y la mayoría de las casas quedan listas en un solo día, con el patio barrido. Vamos a agendar su inspección gratis. ¿Cuál es su nombre?",
   repair:"Entendido — las goteras no esperan, así que vamos rápido. Nuestro equipo sube al techo, graba todo, y le muestra exactamente qué pasa antes de cualquier trabajo. ¿Cuál es su nombre?",
   storm:"Lamento que esté pasando por eso. La buena noticia: documentamos el daño de granizo y viento con fotos y video — justo lo que su reclamo de aseguranza necesita — y la inspección es gratis. ¿Cuál es su nombre?",
+  seal:"Buena decisión — un sellador protector sobre un techo en buen estado puede darle de 5 a 7 años más de vida por una fracción de un reemplazo. Primero inspeccionamos (gratis), sellamos lo que califica y lo documentamos con fotos. ¿Cuál es su nombre?",
   price:"¡Buena pregunta! Cada techo es diferente, así que no adivinamos — inspeccionamos gratis, documentamos todo, y le damos números reales tanto por aseguranza como de su bolsillo. Sin presión, nunca. ¿Le agendo su inspección gratis? ¿Cuál es su nombre?",
   hours:"El equipo trabaja Lun–Vie 7am–8pm y sábados 8am–2pm. Pero yo estoy aquí 24/7 — lo puedo poner en la agenda ahora mismo. ¿Cuál es su nombre?",
   area:"Cubrimos Spring, Houston, The Woodlands, Conroe, Tomball, Klein, Cypress y alrededores. Si está cerca, ¡la inspección es gratis! ¿Cuál es su nombre?",
@@ -1145,12 +1156,13 @@ function handleInput(raw){
   /* intent routing (start / free states) */
   let reply = null;
   if(/replac|reemplaz|new roof|techo nuevo|full|completo|🏠/.test(t)) reply = D.replace;
+  else if(/seal|sella|coat|mainten|manten|tune|🛡/.test(t)) reply = D.seal;
   else if(/leak|gotea|goter|repair|repar|fix|arregl|🔧/.test(t)) reply = D.repair;
   else if(/storm|hail|graniz|torment|hurac|wind|insur|asegur|claim|reclamo|⛈/.test(t)) reply = D.storm;
   else if(/price|cost|precio|cu[aá]nto|quote|cotiz|💲|\$/.test(t)) reply = D.price;
   else if(/hour|horario|open|abier|when.*open/.test(t)) reply = D.hours;
   else if(/area|where|d[oó]nde|zone|zona|cover|cubr|city|ciudad/.test(t)) reply = D.area;
-  else if(/human|person|agente|real|someone|alguien|owner|due[nñ]o|chris|guillermo|memo|call|llam/.test(t)) reply = D.human;
+  else if(/human|person|agente|real|someone|alguien|owner|due[nñ]o|call|llam/.test(t)) reply = D.human;
   else reply = D.fallback;
 
   chatState='await_name';
