@@ -1259,9 +1259,8 @@ document.getElementById('leadForm').addEventListener('submit', function(e){
   if(!ok) return;
 
   const svcSel = document.getElementById('in-service');
-  lead.fullName = name.value.trim();
+  lead.fullName = name.value.trim().split(/\s+/).map(w=>w.charAt(0).toUpperCase()+w.slice(1).toLowerCase()).join(' ');
   lead.name = lead.fullName.split(' ')[0];
-  lead.name = lead.name.charAt(0).toUpperCase()+lead.name.slice(1);
   lead.phone = digits;
   lead.service = svcSel.options[svcSel.selectedIndex].text;
   lead.consent = true;
